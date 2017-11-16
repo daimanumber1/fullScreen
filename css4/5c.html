@@ -175,6 +175,8 @@
 				$.fn.fullpage({
 					slidesColor: ['#F0F2F4', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
 					navigation: true,
+//					若不添加这个参数， 则打开时会滚到最后一个屏幕  而不是第二屏幕
+					anchors: ['page1', 'page2', 'page3', 'page4'],
 					navigationColor: "#4BBFC3",
 					scrollingSpeed: 800,
 					css3: true,
