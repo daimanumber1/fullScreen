@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/jquery.fullPage.css" />
+		<script src="../js/jquery-1.8.3.js"></script>
+		<script src="../js/jquery-ui-1.10.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.fullPage.min.js"></script>
+		<style type="text/css">
+			ul li{
+				padding: 0;
+				margin: 0;
+			}
+			.section {
+				font-size: 50px;
+				text-align: center;
+				color: white;
+			}
+			
+			.section2 p {
+				position: relative;
+				left: -120%;
+			}
+			
+			.section3 p {
+				position: relative;
+				bottom: -120%;
+			}
+			
+			.section4 p {
+				display: none;
+			}
+			#menu {
+				position: fixed;
+				left: 10px;
+				top: 10px;
+				z-index: 2;
+				list-style: none;
+			}
+			#menu li {
+				float: left;
+				width: 80px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				margin-right: 10px;
+				background: white;
+				font-size: 14px;
+			}
+			.active a {
+				background: #333333;
+				color: white;
+			}
+			a{
+				display: inline-block;
+				height: 100%;
+				width: 100%;
+				text-decoration: none;
+				color: black;
+			}
+		</style>
+		<script>
+			$(document).ready(function() {
+				$.fn.fullpage({
+					slidesColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+					anchors: ['page1', 'page2', 'page3', 'page4'],
+					loopBottom: true,
+					menu: "#menu",
+					navigation: true,
+					navigationPosition: "right",
+					afterLoad: function(anchorLink, index) {
+						if(index == 2) {
+							$(".section2").find("p").delay(500).animate({
+								left: 0
+							}, 1500)
+						}
+						if(index == 3) {
+							$(".section3").find("p").delay(500).animate({
+								bottom: 0
+							}, 1500)
+						}
+						if(index == 4) {
+							$(".section4").find("p").fadeIn(1500)
+						}
+					},
+					onLeave: function(index) {
+						if(index == '2') {
+							$('.section2').find('p').delay(500).animate({
+								left: '-120%'
+							}, 2000, 'easeOutExpo');
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		
+		<div id="bigbox">
+			<!--小方块的精髓-->
+			<ul id="menu">
+				<li data-menuanchor="page1" class="active"><a href="#page1">第1屏幕</a></li>
+				<li data-menuanchor="page2"><a href="#page2">第2屏幕</a></li>
+				<li data-menuanchor="page3"><a href="#page3">第3屏幕</a></li>
+				<li data-menuanchor="page4"><a href="#page4">第4屏幕</a></li>
+			</ul>
+			<div class="section section1">
+				<h3>1</h3>
+				<p>fullPage.j11111 回调函数演示</p>
+			</div>
+			<div class="section section2">
+				<h3>2</h3>
+				<p>fullPage.js 22222 回调函数演示</p>
+			</div>
+			<div class="section section3 ">
+				<h3>3</h3>
+				<p>fullPage.js 3333 回调函数演示</p>
+			</div>
+			<div class="section section4">
+				<h3>4</h3>
+				<p>fullPage.js 4444 回调函数演示</p>
+			</div>
+		</div>
+
+	</body>
+
+</html>

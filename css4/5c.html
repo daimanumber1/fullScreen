@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/jquery.fullPage.css" />
+		<script src="../js/jquery-1.11.1.min.js"></script>
+		<script src="../js/jquery-ui-1.10.3.min.js"></script>
+		<script src="../js/jquery.fullPage.min.js"></script>
+		<style type="text/css">
+			.section1 p {
+				text-align: center;
+				font-size: 50px;
+			}
+			
+			.section {
+				overflow: hidden;
+			}
+			
+			.bck11 {
+				height: 450px;
+				width: 450px;
+				background: url(img/iphone1.jpg);
+				background-size: cover;
+				margin: 0 auto;
+			}
+			
+			h1 {
+				color: grey;
+			}
+			
+			p {
+				font-size: 14px;
+				color: grey;
+			}
+			
+			.bck2font {
+				width: 390px;
+				position: absolute;
+				left: 830px;
+				top: 115px;
+				line-height: 30px;
+			}
+			
+			.bck3font {
+				width: 540px;
+				position: absolute;
+				left: 580px;
+				top: 85px;
+				line-height: 30px;
+			}
+			
+			.bck4font {
+				width: 80%;
+				position: absolute;
+				text-align: center;
+				top: 20%;
+				left: 10%;
+				line-height: 30px;
+			}
+			
+			.bck21 {
+				position: relative;
+				/*left: -50px;*/
+				top: -50%;
+				/*float: left;*/
+			}
+			
+			#iphone2 {
+				position: absolute;
+				left: 0px;
+				top: 0;
+			}
+			
+			#iphone2.active {
+				transition: all 1.5s;
+				transform: translate(-60px);
+			}
+			
+			#iphone3 {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#iphone3.active {
+				transition: all 1.5s;
+				transform: translate(284px);
+				z-index: 12;
+			}
+			
+			#iphone4 {
+				position: absolute;
+				left: 30px;
+				top: 0;
+				z-index: 11;
+			}
+			
+			#iphone4.active {
+				transition: all 1.5s;
+				transform: translate(600px);
+			}
+			
+			.section3 {
+				position: relative;
+			}
+			
+			.bck31 {
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				/*top: 50%;*/
+				transition: all 1.2s ease-in-out;
+			}
+			
+			.bck31.moveDown {
+				top: 57%;
+			}
+			
+			.bck31.moveUp {
+				top: 0%;
+			}
+			
+			
+			
+			#iphone-yellow {
+				position: absolute;
+				left: -170px;
+				top: -35px;
+			}
+			
+			#iphone-red {
+				position: absolute;
+				left: 170px;
+				top: -175px;
+				z-index: 3;
+			}
+			
+			#iphone-blue {
+				position: absolute;
+				left: 510px;
+				top: 50%;
+			}
+			
+			#iphone-two {
+				position: absolute;
+				left: 510px;
+				top: 35%;
+				z-index: 2;
+			}
+			.staticImg.moveDown {
+				position: absolute;
+				left: 170px;
+				top: 35%;
+				z-index: 2;
+				transition: all 1s  ease-in-out;
+			}
+			.staticImg.moveUp {
+				position: absolute;
+				left: 170px;
+				top: -18%;
+				z-index: 2;
+				transition: all 1s  ease-in-out;
+			}
+			
+			#fullPage-nav span {
+				border-color: #AAA;
+			}
+			
+			#fullPage-nav li .active span {
+				background: #AAA;
+			}
+		</style>
+		<script>
+			$(function() {
+				$.fn.fullpage({
+					slidesColor: ['#F0F2F4', '#FFFFFF', '#FFFFFF', '#FFFFFF'],
+					navigation: true,
+					navigationColor: "#4BBFC3",
+					scrollingSpeed: 800,
+					css3: true,
+					afterLoad: function(anchorLink, index) {
+						if(index == 2) {
+							$("#iphone3,#iphone4,#iphone2").addClass("active");
+						}
+					},
+					onLeave: function(index, direction) {
+						console.log(index);
+						if(index == 2 && direction == 'down') {
+							$(".bck31").removeClass('moveDown').addClass('moveUp');
+							$(".staticImg").removeClass("moveDown").addClass("moveUp");
+						} else if(index == 3 && direction == 'up') {
+							$('.bck31').removeClass('moveUp').addClass('moveDown');
+						}else if(index == 3 && direction == "down"){
+							$(".staticImg").removeClass("moveUp").addClass("moveDown");
+						}
+						else if(index == 4 && direction == "up"){
+							$(".staticImg").removeClass("moveDown").addClass("moveUp");
+						}
+					}
+
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="bigbox">
+			<div class="section section1">
+				<p>fullPage.js — iPhone 5C演示</p>
+				<div class="bck11">
+
+				</div>
+			</div>
+			<div class="section section2">
+				<div class="bck21">
+					<img id="iphone2" src="img/iphone2.png" />
+					<img id="iphone3" src="img/iphone3.png" />
+					<img id="iphone4" src="img/iphone4.png" />
+				</div>
+				<div class="bck2font">
+					<h1>A powerful plugin</h1>
+					<p><strong>fullPage.js</strong> callbacks allow you to create amazing dynamic sites with a bit of imagination. This example tries to reproduce the Apple iPhone-5c website animations as an example of what fullPage.js is capable of. </p>
+				</div>
+
+			</div>
+			<div class="section section3">
+				<div class="bck31 moveDown">
+					<img src="img/iphone-yellow.png" id="iphone-yellow" />
+					<img src="img/iphone-red.png" id="iphone-red" />
+					<img src="img/iphone-blue.png" id="iphone-blue" />
+				</div>
+				<div class="bck3font">
+					<h1>Amazing stuff</h1>
+					<p>Combining <strong>fullPage.js</strong> with your own CSS styles and animations, you will be able to create something remarkable.</p>
+				</div>
+			</div>
+			<div class="section section4">
+				<div class="staticImg moveDown">
+					<img src="img/iphone-green.png" />
+				</div>
+				<div class="bck41">
+					<img id="iphone-two" src="img/iphone-two.png" />
+				</div>
+				<div class="bck4font">
+					<h1>Just a demo</h1>
+					<p>This is, of course, just a demo. I didn't want to spend much time on it. Don't expect it to work perfectly in all kind of screens. It has been designed to work on 1180px width or over on modern browsers with CSS3.</p>
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>
